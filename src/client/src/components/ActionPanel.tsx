@@ -39,11 +39,10 @@ export default function ActionPanel({
     <section className="actions-section">
       {maxed ? (
         <div className="maxed-banner">
-          🎉 You've purchased the maximum of 2 pairs. Enjoy your sneakers!
+          You've purchased the maximum of 2 pairs. Enjoy your sneakers!
         </div>
       ) : (
         <>
-          {/* Primary — reserve */}
           {!hasHold && !inWaitlist && (status?.stock ?? 0) > 0 && (
             <button
               id="btn-buy"
@@ -51,15 +50,14 @@ export default function ActionPanel({
               onClick={onBuy}
               disabled={loading}
             >
-              {loading ? 'Reserving...' : '⚡ Reserve My Pair'}
+              {loading ? 'Reserving...' : 'Reserve My Pair'}
             </button>
           )}
 
-          {/* Hold active — pay now */}
           {hasHold && (
             <div className="hold-actions">
               <div className="hold-warning">
-                ⏰ Your pair is reserved for{' '}
+                Your pair is reserved for{' '}
                 <strong>{formatTime(holdCountdown)}</strong> — complete payment now!
               </div>
               <button
@@ -68,17 +66,16 @@ export default function ActionPanel({
                 onClick={onPay}
                 disabled={paymentPending}
               >
-                {paymentPending ? '💳 Processing...' : '💳 Pay Now ($299)'}
+                {paymentPending ? 'Processing...' : 'Pay Now ($299)'}
               </button>
             </div>
           )}
 
-          {/* Out of stock — waitlist */}
           {status?.stock === 0 && !hasHold && (
             inWaitlist ? (
               <div className="waitlist-active">
                 <div className="waitlist-info">
-                  📋 You're <strong>#{status.waitlistPosition}</strong> in line.
+                  You're <strong>#{status.waitlistPosition}</strong> in line.
                   We'll notify you when a pair becomes available.
                 </div>
                 <button
@@ -97,17 +94,16 @@ export default function ActionPanel({
                 onClick={onJoinWaitlist}
                 disabled={loading}
               >
-                {loading ? 'Joining...' : '📋 Join Waitlist'}
+                {loading ? 'Joining...' : 'Join Waitlist'}
               </button>
             )
           )}
         </>
       )}
 
-      {/* Demo reset */}
       <section className="demo-section">
         <button id="btn-reset" className="btn btn-ghost" onClick={onReset}>
-          🔄 Reset Demo (stock=20)
+          Reset Demo (stock=20)
         </button>
       </section>
     </section>

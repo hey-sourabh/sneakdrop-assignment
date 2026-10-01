@@ -28,9 +28,7 @@ export default function StatusGrid({
       <h2 className="section-title">Your Status</h2>
       <div className="status-grid">
 
-        {/* Hold */}
         <div className={`status-card ${hasHold ? 'active' : ''}`}>
-          <div className="status-card-icon">{hasHold ? '🔒' : '🔓'}</div>
           <div className="status-card-label">Hold</div>
           <div className="status-card-value">
             {hasHold ? (
@@ -44,9 +42,7 @@ export default function StatusGrid({
           </div>
         </div>
 
-        {/* Waitlist Position */}
         <div className={`status-card ${inWaitlist ? 'active' : ''}`}>
-          <div className="status-card-icon">{inWaitlist ? '📋' : '—'}</div>
           <div className="status-card-label">Queue Position</div>
           <div className="status-card-value">
             {inWaitlist && status ? (
@@ -60,9 +56,7 @@ export default function StatusGrid({
           </div>
         </div>
 
-        {/* Purchases */}
         <div className="status-card">
-          <div className="status-card-icon">🛍️</div>
           <div className="status-card-label">Purchased</div>
           <div className="status-card-value">
             <span className={`purchase-count ${maxed ? 'maxed' : ''}`}>

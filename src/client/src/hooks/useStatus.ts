@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { getStatus } from '../api';
 import type { UserStatus, ToastMessage, MessageType } from '../types';
 
-// Generate or retrieve a persistent demo user ID
 export function getUserId(): string {
   let id = localStorage.getItem('sneakdrop_user_id');
   if (!id) {
@@ -33,7 +32,6 @@ export function useStatus(userId: string) {
     }
   }, [userId]);
 
-  // Poll every 3 seconds
   useEffect(() => {
     void fetchStatus();
     pollingRef.current = setInterval(() => void fetchStatus(), 3000);
@@ -42,7 +40,6 @@ export function useStatus(userId: string) {
     };
   }, [fetchStatus]);
 
-  // Live countdown
   useEffect(() => {
     if (countdownRef.current) clearInterval(countdownRef.current);
     if (holdCountdown !== null && holdCountdown > 0) {
@@ -60,7 +57,6 @@ export function useStatus(userId: string) {
     return () => {
       if (countdownRef.current) clearInterval(countdownRef.current);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [holdCountdown !== null ? Math.floor(holdCountdown / 10) : null]);
 
   const showMessage = useCallback(

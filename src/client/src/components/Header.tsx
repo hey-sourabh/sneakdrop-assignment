@@ -7,7 +7,6 @@ export default function Header({ userId }: HeaderProps) {
     <header className="header">
       <div className="header-inner">
         <div className="brand">
-          <span className="brand-icon">👟</span>
           <span className="brand-name">SneakDrop</span>
         </div>
         <div className="user-badge">

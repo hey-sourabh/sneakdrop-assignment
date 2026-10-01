@@ -21,7 +21,7 @@ export default function StockBar({ stock }: StockBarProps) {
           style={{ width: `${stockPercent}%` }}
         />
       </div>
-      {stock === 0 && <div className="sold-out-badge">🔴 SOLD OUT</div>}
+      {stock === 0 && <div className="sold-out-badge">SOLD OUT</div>}
     </div>
   );
 }
