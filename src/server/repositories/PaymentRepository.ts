@@ -18,8 +18,9 @@ class PaymentRepository {
   async claim(paymentId: string, data: PaymentRecord): Promise<boolean> {
     const key = REDIS_KEYS.payment(paymentId);
     const claimed = await this.client.setNX(key, JSON.stringify(data));
-    if (claimed) await this.client.expire(key, PAYMENT_TTL_SECONDS);
-    return claimed;
+    const success = claimed === 1;
+    if (success) await this.client.expire(key, PAYMENT_TTL_SECONDS);
+    return success;
   }
 
   async get(paymentId: string): Promise<PaymentRecord | null> {
